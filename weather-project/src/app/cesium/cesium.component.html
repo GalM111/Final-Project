@@ -1,0 +1,35 @@
+
+<p>cesium component</p>
+
+<div id="cesiumPage">
+    <ac-map #idMap class="cesiumContainer" [id]="mapId" [sceneMode]="sceneMode">
+        <ac-map-layer-provider [show]="true" [provider]="mapProvider" [options]="providerOptions">
+            <ac-layer acFor="let point of points" [context]="this">
+                <ac-point-desc props="{
+    position:point.position,
+    pixelSize:point.pixelSize,
+    color:point.color
+}">
+                </ac-point-desc>
+            </ac-layer>
+            <ac-layer acFor="let label of labels" [context]="this">
+                <ac-label-desc props="{
+    position:label.position,
+    text: label.text,
+    horizontalOrigin: label.horizontalOrigin,
+    font: label.font,
+    pixelOffset:label.pixelOffset,
+    color:label.color,
+    fillColor:label.fillColor
+}">
+                </ac-label-desc>
+            </ac-layer>
+        </ac-map-layer-provider>
+    </ac-map>
+</div>
+<div id="forecastContainer">
+    <button id="exitBtn" (click)="exitClicked()">Exit</button>
+    <h1 id="locationName"></h1>
+    <mat-spinner id="spinner"></mat-spinner>
+
+</div> 
